@@ -9,6 +9,7 @@ function App() {
   return (
     <div>
       <h1 className='text-[100px]'>Hellow World</h1>
+      <h2 className='text-slate-800'>Test Tailwind</h2>
     </div>
   )
 }
