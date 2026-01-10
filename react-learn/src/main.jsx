@@ -1,17 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import HelloWorld from './HelloWorld.jsx'
+import Container from './Container.jsx'
+import TodoUi from './TodoLogic/TodoUi.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App></App>
-  </StrictMode>,
-)
 
 createRoot(document.getElementById('akar')).render(
   <StrictMode>
-    <HelloWorld/>`
+    <Container>
+      <HelloWorld />
+      <TodoUi />
+    </Container>
   </StrictMode>
 )
