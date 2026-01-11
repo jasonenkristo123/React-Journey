@@ -1,15 +1,11 @@
-export default function Todo({text, isComplete}) {
-    if (isComplete) {
-        return (
-            <li>
-                <del>{text}</del>
-            </li>
-        )
+export default function Todo({text, isComplete, isDeleted = false}) {
+    if (isDeleted) {
+        return null
     } else {
         return (
-            <li>
-                {text}
-            </li>
+        <li>
+            {text} {isComplete ? '✅' : '❌'}
+        </li>
         )
     }
 }
