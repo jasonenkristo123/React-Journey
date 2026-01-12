@@ -1,8 +1,12 @@
 import './index.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Button() {
     const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        console.log(`jumlah di klik: ${count}`);
+    }, [count]);
 
     return (
         <div className='text-center text-3xl'>
