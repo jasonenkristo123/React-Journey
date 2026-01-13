@@ -6,6 +6,7 @@ import Container from './Container.jsx'
 import TodoUi from './TodoLogic/TodoUi.jsx'
 import Button from './Button.jsx'
 import NamaWelek from './NamaWelek.jsx'
+import FormHandle from './Form.jsx'
 
 createRoot(document.getElementById('akar')).render(
   <StrictMode>
@@ -14,7 +15,8 @@ createRoot(document.getElementById('akar')).render(
       <TodoUi />
     </Container>
 
-    <Button />
-    <NamaWelek />
+      <Button />
+        <NamaWelek />
+          <FormHandle />
   </StrictMode>
 )
