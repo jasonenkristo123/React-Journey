@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function TaskForm({onSubmit}) {
+export default function TaskForm({setItems}) {
     const [item, setItem] = useState("");
 
     function handleChange(e) {
@@ -9,7 +9,10 @@ export default function TaskForm({onSubmit}) {
 
     function handleClick(e) {
         e.preventDefault();
-        onSubmit(item);
+        setItems(draft => {
+            draft.push(item);
+        })
+        
         setItem("");
     }
 
