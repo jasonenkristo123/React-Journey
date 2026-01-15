@@ -14,9 +14,9 @@ export default function NoteForm({onAddNote}) {
     }
 
     return (
-        <label>
-            <input type="text" placeholder="Add Note" onChange={handleChange} value={text} />
+        <>
+            <input placeholder="Add Note" onChange={handleChange} value={text} />
             <button onClick={handleClick}>Add</button>
-        </label>
+        </>
     )
 }
