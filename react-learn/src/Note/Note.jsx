@@ -6,23 +6,22 @@ export default function Note({note, onChange, onDelete}) {
     let component;
 
     function handleChangeText(e) {
-        const newNote = {...note, text: e.target.value};
+        const newNote = {...note, text: e.target.value}
         onChange(newNote);
     }
-    
+
     if (isEditing) {
-        component = (
+        component = 
             <>
-                <input value={note.text}  onChange={handleChangeText}/>
+                <input type="text"  value={note.text} onChange={handleChange}/>
                 <button onClick={() => setIsEditing(false)}>Save</button>
             </>
-        )
     } else {
         component = 
-        <>
-            {note.text}
-            <button onClick={() => setIsEditing(true)}>Edit</button>
-        </>
+            <>
+                {note.text}
+                <button onClick={() => setIsEditing(true)}>Edit</button>
+            </>
     }
 
     function handleChangeDone(e) {
@@ -32,7 +31,7 @@ export default function Note({note, onChange, onDelete}) {
 
     return (
         <label>
-            <input type="checkbox" checked={note.done} onChange={handleChangeDone} />
+            <input type="checkbox" checked={note.done} onChange/>
             {component}
             <button onClick={() => onDelete(note)}>Delete</button>
         </label>

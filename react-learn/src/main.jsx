@@ -18,5 +18,6 @@ createRoot(document.getElementById('akar')).render(
       <Button />
         <NamaWelek />
           <FormHandle />
+          <NoteApp />
   </StrictMode>
 )

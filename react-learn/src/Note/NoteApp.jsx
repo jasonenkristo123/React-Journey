@@ -4,18 +4,18 @@ import NoteList from "./NoteList";
 
 let id = 0;
 
-const initialNotes = [
-    {id: id++, text: "Learn HTML", done:false},
-    {id: id++, text: "Learn CSS", done:true},
-    {id: id++, text: "Learn JavaScript", done:false},
-    {id: id++, text: "Learn React", done:false},
-]
+let initialNotes = [
+    {id: id++, text: "Learn Html", done: false},
+    {id: id++, text: "Learn Java", done: false},
+    {id: id++, text: "Learn Css", done: false},
+    {id: id++, text: "Learn Dsa", done: false},
+];
 
 export default function NoteApp() {
     const [notes, setNotes] = useImmer(initialNotes);
 
     function handleAddNote(text) {
-        setNotes((draft) => {
+        setNotes(draft => {
             draft.push({
                 id: id++,
                 text: text,
@@ -41,9 +41,8 @@ export default function NoteApp() {
     return (
         <div>
             <h1>Note App</h1>
-            <NoteForm onAddNote={handleAddNote}/>
-            <NoteList note={notes} onChange={handleChangeNote} onDelete={handleDeleteNote}/>
+            <NoteForm onAddNote={handleAddNote} />
+            <NoteList notes={notes} onChange={handleChangeNote} onDelete={handleDeleteNote} />
         </div>
     )
-    
 }

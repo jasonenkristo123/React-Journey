@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 export default function NoteForm({onAddNote}) {
     const [text, setText] = useState("");
 
@@ -13,9 +14,9 @@ export default function NoteForm({onAddNote}) {
     }
 
     return (
-        <>
-            <input value={text} placeholder="Add Note" onChange={handleChange} />
+        <label>
+            <input type="text" placeholder="Add Note" onChange={handleChange} value={text} />
             <button onClick={handleClick}>Add</button>
-        </>
+        </label>
     )
 }
