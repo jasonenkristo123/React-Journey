@@ -20,9 +20,11 @@ function notesReducer(notes, action) {
             done: false
         })
     } else if (action.type === "CHANGE_NOTE") {
-        notes.map(note => note.id === action.id ? {...note, text: action.text, done: action.done} : note);
+        const index = notes.findIndex(note => note.id === action.id);
+        notes[index] = {...action};
     } else if (action.type === "DELETE_NOTE") {
-        notes.filter(note => note.id !== action.id);
+        const index = notes.findIndex(note => note.id === action.id);
+        notes.splice(index, 1);
     }
 }
 
