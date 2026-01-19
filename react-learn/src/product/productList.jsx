@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Product from "./product";
-
+import '../index.css'
 
 export default function ProductList() {
     const [products, setProduct] = useState([]);
@@ -16,11 +16,10 @@ export default function ProductList() {
     }, [])
 
     return (
-        <>
-            <h1>Product List</h1>
+        <div className="flex flex-row flex-wrap gap-6 m-6">
             {products.map((product) => (
                 <Product key={product.id} product={product} />
             ))}
-        </>
+        </div>
     )
 }
