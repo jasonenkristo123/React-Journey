@@ -19,16 +19,20 @@ export default function ProductList() {
     }, [load])
     
     function handleClick() {
-        setLoad(true);
+        if (load) {
+            setProduct([]);
+        }
+        setLoad(!load);
     }
 
     return (
-        <div className="flex flex-row flex-wrap gap-6 m-6">
-            <h1>Product List</h1>
-            <button onClick={handleClick}>Load Product</button>
+        <>
+            <h1 className="font-bold">Product List</h1>
+            <button className="border-2 rounded-md bg-slate-300 shadow-md px-3 py-2
+            flex mx-auto font-semibold hover:opacity-70 " onClick={handleClick} >Load Product</button>
             {products.map((product) => (
                 <Product key={product.id} product={product} />
             ))}
-        </div>
+        </>
     )
 }

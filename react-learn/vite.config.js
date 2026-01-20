@@ -9,7 +9,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: "index.html",
-        product: "product.html"
+        product: "product.html",
+        notes: "notes.html",
       }
     }
   }
