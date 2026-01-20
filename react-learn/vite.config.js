@@ -11,6 +11,7 @@ export default defineConfig({
         index: "index.html",
         product: "product.html",
         notes: "notes.html",
+        custom: "custom.html"
       }
     }
   }
