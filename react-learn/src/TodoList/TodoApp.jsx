@@ -48,7 +48,7 @@ export function TodoApp() {
     function handleToggle(todo) {
         dispatch({
             type: "TOGGLE_TODO",
-            done: todo.done
+            id: todo.id
         })
     }
 
