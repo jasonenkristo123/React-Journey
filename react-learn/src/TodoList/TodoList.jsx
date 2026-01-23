@@ -1,11 +1,11 @@
 import Todo from "./Todo";
 
-export default function TodoList({notes, onChange, onDelete}) {
+export default function TodoList({todos, onChange, onDelete}) {
     return (
-        <ul>
-            {notes.map(note => (
-                <li key={note.id}>
-                    <Todo note={note} onChange={onChange} onDelete={onDelete} />
+        <ul className="text-slate-800">
+            {todos.map(todo => (
+                <li key={todo.id}>
+                    <Todo todo={todo} onChange={onChange} onDelete={onDelete} />
                 </li>
             ))}
         </ul>
