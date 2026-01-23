@@ -2,10 +2,10 @@ import { useImmerReducer } from "use-immer";
 import Header from "./Header";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
+import TodoDone from "./TodoDone";
 
 
 let initialTodo = [
-    {id: Date.now(), text: "Learn React", done: false}
 ];
 
 function todoReducer(todos, action) {
@@ -13,33 +13,30 @@ function todoReducer(todos, action) {
         todos.push({
             id: Date.now(),
             text: action.text,
+            date: action.date,
             done: false
         })
-    } else if (action.type === "CHANGE_TODO") {
-        const index = todos.findIndex(todo => todo.id === action.id);
-        todos[index] = {...action};
     } else if (action.type === "DELETE_TODO") {
         const index = todos.findIndex(todo => todo.id === action.id);
         todos.splice(index, 1);
+    } else if (action.type === "TOGGLE_TODO") {
+        const index = todos.findIndex(todo => todo.id === action.id);
+        todos[index].done = !todos[index].done;
     }
 }
 
 export function TodoApp() {
     const [todos, dispatch] = useImmerReducer(todoReducer, initialTodo);
 
-    function handleAdd(text) {
+    function handleAdd(text, date) {
         dispatch({
             type: "ADD_TODO",
-            text: text
+            text: text,
+            date: date
         })
     } 
 
-    function handleChange(todo) {
-        dispatch({
-            ...todo,
-            type:"CHANGE_TODO"
-        })
-    }
+    
 
     function handleDelete(todo) {
         dispatch({
@@ -48,12 +45,20 @@ export function TodoApp() {
         })
     }
 
+    function handleToggle(todo) {
+        dispatch({
+            type: "TOGGLE_TODO",
+            done: todo.done
+        })
+    }
+
     return (
         <div>
             <Header/>
             <TodoForm onAddNote={handleAdd}/>
-            <TodoList todos={todos} onChange={handleChange} onDelete={handleDelete}/>
+            <TodoList
+            todos={todos.filter(todo => !todo.done)} onToggle={handleToggle} onDelete={handleDelete}/>
+            <TodoDone todos={todos.filter(todo => todo.done)} onToggle={handleToggle} onDelete={handleDelete} />
         </div>
     )
-
 }

@@ -1,42 +1,18 @@
-import { useState } from "react";
+
 import '../index.css'
 
-export default function Todo({todo, onChange, onDelete}) {
-    const [isEditing, setIsEditing] = useState(false);
+export default function Todo({todo, onToggle, onDelete}) {
+    return (    
+        <div className="flex justify-between rounded-lg shadow-md bg-gray-50 p-4">
+            <div>
+                <p>{todo.text}</p>
+                <p>{todo.date}</p>
+            </div>
 
-    let component;
-
-    function handleChange(e) {
-        const newNote = {...todo, text: e.target.value};
-        onChange(newNote)
-    }
-
-    if (isEditing) {
-        component = (
-            <>
-                <input type="text" onChange={handleChange} value={todo.text} />
-                <button onClick={() => setIsEditing(false)}>Save</button>
-            </>
-        )
-    } else {
-        component = (
-            <>
-                {todo.text}
-                <button onClick={() => setIsEditing(true)}>Edit</button>
-            </>
-        )
-    }
-
-    function handleDone(e) {
-        const newNote = {...todo, done: e.target.checked};
-        onChange(newNote);
-    }
-
-    return (
-        <div className="flex gap-4 justify-center">
-            {component}
-            <input type="checkbox" checked={todo.done} onChange={handleDone} />
-            <button onClick={() => onDelete(todo)}>Delete</button>
+            <div className='space-x-2'>
+                <button onClick={() => onToggle(todo)}>{todo.done ? "◀" : "✅"}</button>
+                <button onClick={() => onDelete(todo)}>🗑</button>
+            </div>
         </div>
     )
 }

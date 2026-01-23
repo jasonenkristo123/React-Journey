@@ -9,9 +9,14 @@ export default function TodoForm({onAddNote}) {
         setText(e.target.value);
     }
 
-    function handleClick() {
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!text && !date) return;
+
+        
+        onAddNote(text, date);
         setText("");
-        onAddNote(text);
+        setDate("");
     }
 
     function handleDate(e) {
@@ -19,10 +24,10 @@ export default function TodoForm({onAddNote}) {
     }
 
     return (
-        <main className="max-w-2xl mx-auto space-y-6 py-6">
-            <section className="bg-slate-200 p-6 rounded-lg shadow-md">
-            <h2 className="text-center mb-4 font-semibold">Tambah Yang Harus Dilakukan</h2>
-            <form className="space-y-4">
+        <main className="md:max-w-3xl mx-auto space-y-6 py-6 max-w-sm lg:max-w-4xl">
+            <section className="bg-slate-100 p-6 rounded-lg shadow-xl border border-slate-500">
+            <h2 className="text-center mb-4 font-bold">Tambah Yang Harus Dilakukan</h2>
+            <form className="space-y-4" onSubmit={handleSubmit}>
                 <div >
                     <label htmlFor="todo" className="block text-sm font-light text-slate-700 mb-1">Masukkan hal yang dilakukan</label>  
                     <input 
@@ -36,7 +41,7 @@ export default function TodoForm({onAddNote}) {
                     border focus:bg-slate-300 " 
                     type="date" value={date} onChange={handleDate} placeholder="Add Todo"/>
                     <div className="mt-4 text-right">
-                        <button className="text-slate-800 font-bold border px-3 py-2 rounded-lg bg-slate-200 " onClick={handleClick}>Submit</button>
+                        <button className="text-slate-800 font-bold border px-3 py-2 rounded-lg bg-slate-200 " >Submit</button>
                     </div>
                 </div>
             </form>
