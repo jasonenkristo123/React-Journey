@@ -19,11 +19,7 @@ export default function TodoForm({onAdd}) {
 
         if (!todo && !date) return;
 
-        onAdd(todo, date);
-        setTodo("");
-        setDate("");
-    }
-
+        on
     return (
         <article className="max-w-3xl mx-auto space-y-6 p-6">
             <section className="bg-slate-300 rounded-md shadow-lg p-6 border ">
